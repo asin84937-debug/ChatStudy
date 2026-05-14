@@ -72,9 +72,74 @@ User authentication mechanisms are essential to ensure secure and authorized acc
 Client-server chat applications are versatile tools that facilitate real-time communication between users over a network. They incorporate various components, including server-side and client-side elements, and must consider factors such as security, scalability, and concurrency. As technology continues to advance, client-server chat applications remain integral for collaborative communication in various domains.
 
 Client-server chat applications are foundational to real-time communication over networks. They incorporate principles of socket programming, communication protocols, and security mechanisms to provide a seamless user experience. Understanding the basics of client-server chat applications is essential for developers involved in networked application development, as they form the backbone of various collaborative communication systems. As technology evolves, chat applications continue to adapt, incorporating new features and technologies to enhance user interaction and connectivity.
+## Client.py
+```
+import socket
 
+client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+host = "127.0.0.1"
+port = 12345
+
+client.connect((host, port))
+
+while True:
+    msg = input("Client: ")
+    client.send(msg.encode())
+
+    if msg.lower() == "exit":
+        break
+
+    server_msg = client.recv(1024).decode()
+    print("Server:", server_msg)
+
+    if server_msg.lower() == "exit":
+        break
+
+client.close()
+```
+## Server.py:
+```
+import socket
+
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+host = "127.0.0.1"
+port = 12345
+
+server.bind((host, port))
+server.listen(1)
+
+print("Server waiting for connection...")
+
+conn, addr = server.accept()
+print("Connected to:", addr)
+
+while True:
+    client_msg = conn.recv(1024).decode()
+    print("Client:", client_msg)
+
+    if client_msg.lower() == "exit":
+        break
+
+    msg = input("Server: ")
+    conn.send(msg.encode())
+
+    if msg.lower() == "exit":
+        break
+
+conn.close()
+server.close()
+```
+## Output:
+## Client.py output:
+<img width="650" height="805" alt="Screenshot 2026-05-14 220024" src="https://github.com/user-attachments/assets/bcca1aed-9686-4fa4-ab07-9091b2fc1f76" />
+## Server.py output:
+<img width="660" height="688" alt="Screenshot 2026-05-14 220151" src="https://github.com/user-attachments/assets/5543755e-de29-4cd2-ab78-ba066d013b87" />
+
+## Developed by: A.Asin banu
+## Register Number: 212225040035
 
 ## Result:
-
 Thus the study on Client Server Chat Applications has been performed
 
