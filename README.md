@@ -115,9 +115,12 @@ while True:
 conn.close()
 server.close()
 ```
+
 ## Output:
+
 ## Client.py output:
 <img width="650" height="805" alt="Screenshot 2026-05-14 220024" src="https://github.com/user-attachments/assets/bcca1aed-9686-4fa4-ab07-9091b2fc1f76" />
+
 ## Server.py output:
 <img width="653" height="703" alt="Screenshot 2026-05-14 220750" src="https://github.com/user-attachments/assets/9628765b-9166-4ebc-9f64-88501ab1e6fc" />
 
